@@ -1,0 +1,16 @@
+order_id,customer_id,order_date,product_id,product_name,product_price,quantity
+1,601,2023-08-25,P12,Microwave,150,1
+2,602,2023-09-15,P13,Refrigerator,800,1
+3,603,2023-09-25,P14,Washing Machine,500,1
+4,604,2023-10-15,P15,Dishwasher,400,1
+5,605,2023-10-25,P16,Coffee Maker,100,2
+6,606,2023-11-15,P17,Blender,150,1
+7,607,2023-11-25,P18,Toaster,50,2
+8,608,2023-12-15,P19,Kettle,30,1
+9,609,2023-12-25,P20,Iron,40,2
+10,610,2024-01-15,P21,Hair Dryer,60,1
+11,611,2024-01-25,P22,Electric Shaver,80,2
+12,612,2024-02-15,P01,Laptop,1200,1
+13,613,2024-02-25,P02,Smartphone,800,2
+14,614,2024-03-15,P03,Headphones,150,3
+15,615,2024-03-25,P04,Smartwatch,250,1

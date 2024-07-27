@@ -1,57 +1,55 @@
 import unittest
 import pandas as pd
 from app import load_data, compute_revenue_by_month, compute_revenue_by_product, compute_revenue_by_customer, top_customers_by_revenue
+from test_cases import test_cases
 
 class TestOrderAnalyzer(unittest.TestCase):
     def setUp(self):
-        # Create sample data for testing
-        self.data = {
-            'order_id': [1, 2, 3, 4],
-            'customer_id': [101, 102, 101, 103],
-            'order_date': ['2023-01-15', '2023-02-15', '2023-01-25', '2023-02-25'],
-            'product_id': ['P1', 'P2', 'P1', 'P3'],
-            'product_name': ['Product A', 'Product B', 'Product A', 'Product C'],
-            'product_price': [100, 200, 100, 300],
-            'quantity': [2, 1, 3, 1]
-        }
-        self.df = pd.DataFrame(self.data)
-        # Create a DataFrame with missing values for testing
-        self.df_with_missing = self.df.copy()
-        self.df_with_missing.loc[0, 'product_price'] = None
+        # Define the list of test CSV files and corresponding test cases
+        self.test_files = ['test1.csv', 'test2.csv', 'test3.csv', 'test4.csv', 'test5.csv']
+        self.test_cases = test_cases
 
     def test_load_data(self):
-        # test successful loading
-        df = load_data('orders.csv')  # Replace with your test data file
-        self.assertIsInstance(df, pd.DataFrame)
-        print("\nUnit Test Passed: load_data()")
-        # test error handling (optional)
-        # test for FileNotFoundError, EmptyDataError, etc.
+        # Ensure that we can load data from a CSV file
+        for file in self.test_files:
+            df = load_data(file)
+            self.assertIsInstance(df, pd.DataFrame)
+            print(f"\nUnit Test Passed: load_data() for {file}")
 
     def test_compute_revenue_by_month(self):
-        revenue_by_month = compute_revenue_by_month(self.df)
-        self.assertIsInstance(revenue_by_month, pd.Series)
-        # adding more specific assertions based on expected results
-        print("\nUnit Test Passed: compute_revenue_by_month()")
+        for i, file in enumerate(self.test_files, start=1):
+            df = load_data(file)
+            revenue_by_month = compute_revenue_by_month(df)
+            expected = self.test_cases[f"case{i}"]["total revenue by month"]
+            self.assertEqual(revenue_by_month.sort(),expected.sort())
+            print(f"\nUnit Test Passed: compute_revenue_by_month() for {file}")
+
 
     def test_compute_revenue_by_product(self):
-        revenue_by_product = compute_revenue_by_product(self.df)
-        self.assertIsInstance(revenue_by_product, pd.Series)
-        # adding more specific assertions based on expected results
-        print("\nUnit Test Passed: compute_revenue_by_product()")
+        for i, file in enumerate(self.test_files, start=1):
+            df = load_data(file)
+            revenue_by_product = compute_revenue_by_product(df)
+            expected = self.test_cases[f"case{i}"]["total revenue by product"]
+            self.assertEqual(revenue_by_product.sort(),expected.sort())
+            print(f"\nUnit Test Passed: compute_revenue_by_product() for {file}")
 
+    
     def test_compute_revenue_by_customer(self):
-        revenue_by_customer = compute_revenue_by_customer(self.df)
-        self.assertIsInstance(revenue_by_customer, pd.Series)
-        # adding more specific assertions based on expected results
-        print("\nUnit Test Passed: compute_revenue_by_customer()")
+        for i, file in enumerate(self.test_files, start=1):
+            df = load_data(file)
+            revenue_by_customer = compute_revenue_by_customer(df)
+            expected = self.test_cases[f"case{i}"]["total revenue by customer"]
+            self.assertEqual(revenue_by_customer.sort(),expected.sort())
+            print(f"\nUnit Test Passed: compute_revenue_by_customer() for {file}")
 
     def test_top_customers_by_revenue(self):
-        revenue_by_customer = compute_revenue_by_customer(self.df)
-        top_customers = top_customers_by_revenue(revenue_by_customer, 2)
-        self.assertIsInstance(top_customers, pd.Series)
-        self.assertEqual(len(top_customers), 2)
-        # adding more specific assertions based on expected results
-        print("\nUnit Test Passed: top_customers_by_revenue()")
+        for i, file in enumerate(self.test_files, start=1):
+            df = load_data(file)
+            revenue_by_customer = compute_revenue_by_customer(df)
+            top_customers = top_customers_by_revenue(revenue_by_customer, 10)
+            expected = self.test_cases[f"case{i}"]["top 10 customers by revenue"]
+            self.assertEqual(top_customers.sort(),expected.sort())
+            print(f"\nUnit Test Passed: top_customers_by_revenue() for {file}")
 
 if __name__ == '__main__':
     unittest.main()
