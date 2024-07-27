@@ -5,18 +5,19 @@ from test_cases import test_cases
 
 class TestOrderAnalyzer(unittest.TestCase):
     def setUp(self):
-        # Define the list of test CSV files and corresponding test cases
+        # define the list of test CSV files and corresponding test cases
         self.test_files = ['test1.csv', 'test2.csv', 'test3.csv', 'test4.csv', 'test5.csv']
         self.test_cases = test_cases
 
     def test_load_data(self):
-        # Ensure that we can load data from a CSV file
+        # ensure that we can load data from a CSV file
         for file in self.test_files:
             df = load_data(file)
             self.assertIsInstance(df, pd.DataFrame)
             print(f"\nUnit Test Passed: load_data() for {file}")
 
     def test_compute_revenue_by_month(self):
+        # test revenue calculation by month
         for i, file in enumerate(self.test_files, start=1):
             df = load_data(file)
             revenue_by_month = compute_revenue_by_month(df)
@@ -26,6 +27,7 @@ class TestOrderAnalyzer(unittest.TestCase):
 
 
     def test_compute_revenue_by_product(self):
+        # test revenue calculation by product
         for i, file in enumerate(self.test_files, start=1):
             df = load_data(file)
             revenue_by_product = compute_revenue_by_product(df)
@@ -35,6 +37,7 @@ class TestOrderAnalyzer(unittest.TestCase):
 
     
     def test_compute_revenue_by_customer(self):
+        # test revenue calculation by customer
         for i, file in enumerate(self.test_files, start=1):
             df = load_data(file)
             revenue_by_customer = compute_revenue_by_customer(df)
@@ -43,6 +46,7 @@ class TestOrderAnalyzer(unittest.TestCase):
             print(f"\nUnit Test Passed: compute_revenue_by_customer() for {file}")
 
     def test_top_customers_by_revenue(self):
+        # test identifying top customers by revenue
         for i, file in enumerate(self.test_files, start=1):
             df = load_data(file)
             revenue_by_customer = compute_revenue_by_customer(df)
