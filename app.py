@@ -12,7 +12,7 @@ def load_data(file_path: str) -> pd.DataFrame:
     """
     try:
         df = pd.read_csv(file_path)
-        print("Data loaded successfully.")
+        # print("Data loaded successfully.")
         return df
     except FileNotFoundError:
         print(f"Error: File not found at path {file_path}")
