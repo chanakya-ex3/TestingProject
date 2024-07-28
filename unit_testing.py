@@ -1,12 +1,12 @@
 import unittest
 import pandas as pd
-from app import load_data, compute_revenue_by_month, compute_revenue_by_product, compute_revenue_by_customer, top_customers_by_revenue
-from test_cases import test_cases
+from  task.app import load_data, compute_revenue_by_month, compute_revenue_by_product, compute_revenue_by_customer, top_customers_by_revenue
+from testing.test_cases import test_cases
 
 class TestOrderAnalyzer(unittest.TestCase):
     def setUp(self):
         # define the list of test CSV files and corresponding test cases
-        self.test_files = ['test1.csv', 'test2.csv', 'test3.csv', 'test4.csv', 'test5.csv']
+        self.test_files = ['testing/test1.csv', 'testing/test2.csv', 'testing/test3.csv', 'testing/test4.csv', 'testing/test5.csv']
         self.test_cases = test_cases
 
     def test_load_data(self):

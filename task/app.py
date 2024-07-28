@@ -82,7 +82,7 @@ def top_customers_by_revenue(revenue_by_customer: list, top_n: int = 10) -> list
     return revenue_by_customer[:top_n]
 
 def main():
-    df = load_data("test1.csv")
+    df = load_data("orders.csv")
 
     # compute and print the total revenue by month
     revenue_by_month = compute_revenue_by_month(df)
