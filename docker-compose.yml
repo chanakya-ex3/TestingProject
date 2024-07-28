@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.task
+    volumes:
+      -   .:/app
+    networks:
+      - app-network
+
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    volumes:
+      - .:/app
+    networks:
+      - app-network
+    command: python unit_testing.py
+
+networks:
+  app-network:
+    driver: bridge
