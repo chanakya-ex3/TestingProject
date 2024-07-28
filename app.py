@@ -87,30 +87,26 @@ def main():
     # compute and print the total revenue by month
     revenue_by_month = compute_revenue_by_month(df)
     print("total revenue by month:")
-    print(revenue_by_month)
-    # for month, revenue in revenue_by_month:
-    #     print(f"{month}: {revenue}")
+    for month, revenue in revenue_by_month:
+        print(f"{month}: {revenue}")
 
     # compute and print the total revenue by product
     revenue_by_product = compute_revenue_by_product(df)
     print("\ntotal revenue by product:")
-    print(revenue_by_product)
-    # for product, revenue in revenue_by_product:
-    #     print(f"{product}: {revenue}")
+    for product, revenue in revenue_by_product:
+        print(f"{product}: {revenue}")
 
     # compute and print the total revenue by customer
     revenue_by_customer = compute_revenue_by_customer(df)
     print("\ntotal revenue by customer:")
-    print(revenue_by_customer)
-    # for customer, revenue in revenue_by_customer:
-    #     print(f"{customer}: {revenue}")
+    for customer, revenue in revenue_by_customer:
+        print(f"{customer}: {revenue}")
 
     # identify and print the top 10 customers by revenue
     top_customers = top_customers_by_revenue(revenue_by_customer)
     print("\ntop 10 customers by revenue:")
-    print(top_customers)
-    # for customer, revenue in top_customers:
-    #     print(f"{customer}: {revenue}")
+    for customer, revenue in top_customers:
+        print(f"{customer}: {revenue}")
 
 if __name__ == "__main__":
     main()

@@ -1,6 +1,6 @@
 import unittest
 import pandas as pd
-from  task.app import load_data, compute_revenue_by_month, compute_revenue_by_product, compute_revenue_by_customer, top_customers_by_revenue
+from  app import load_data, compute_revenue_by_month, compute_revenue_by_product, compute_revenue_by_customer, top_customers_by_revenue
 from testing.test_cases import test_cases
 
 class TestOrderAnalyzer(unittest.TestCase):
